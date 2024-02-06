@@ -23,6 +23,7 @@ class MLP:
         self.size = 0
         self.lRMS = [] # hold all traced RMSs to draw graph
         self.laccuracy = [] # hold all traced accuracies to draw graph
+        self.mean_fitness = -np.inf
 
         if chromosome is None:  
             for i in range(len(layers)-1):
@@ -35,6 +36,9 @@ class MLP:
             for i in range(len(layers)-1):
                 self.size += layers[i] * layers[i+1] + layers[i+1]
             self.from_chromosome(chromosome)
+
+    def reset_fitness(self):
+        self.mean_fitness = -np.inf
         
     def sigm (self, neta):
         return 1.0 / (1.0 + np.exp(-neta))
