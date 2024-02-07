@@ -1,0 +1,113 @@
+Model with the chromosome at C:\Master\Aprendizaje por refuerzo y técnicas generativas\P1\results\best_lunarlander_2024-02-05_23-36 loaded
+Starting test for 100 epochs...
+
+Epoch  0 --> Steps:  386 | Non-zero actions:  296 | Actions/Steps: 0.7668 | Score: 244.16455402715764
+Epoch  1 --> Steps:  510 | Non-zero actions:  418 | Actions/Steps: 0.8196 | Score: 205.31346210780163
+Epoch  2 --> Steps:  426 | Non-zero actions:  368 | Actions/Steps: 0.8638 | Score: 256.5878763131568
+Epoch  3 --> Steps:  493 | Non-zero actions:  425 | Actions/Steps: 0.8621 | Score: 264.5879609407217
+Epoch  4 --> Steps:  434 | Non-zero actions:  348 | Actions/Steps: 0.8018 | Score: 228.1295331172233
+Epoch  5 --> Steps:  450 | Non-zero actions:  382 | Actions/Steps: 0.8489 | Score: 230.29257198906816
+Epoch  6 --> Steps:  578 | Non-zero actions:  488 | Actions/Steps: 0.8443 | Score: 233.1978943324047
+Epoch  7 --> Steps:  477 | Non-zero actions:  386 | Actions/Steps: 0.8092 | Score: 231.95206858488942
+Epoch  8 --> Steps:  505 | Non-zero actions:  409 | Actions/Steps: 0.8099 | Score: 223.5407999093195
+Epoch  9 --> Steps:  397 | Non-zero actions:  312 | Actions/Steps: 0.7859 | Score: 256.9883823808432
+Epoch 10 --> Steps:  420 | Non-zero actions:  349 | Actions/Steps: 0.8310 | Score: 229.80067619519167
+Epoch 11 --> Steps:  392 | Non-zero actions:  308 | Actions/Steps: 0.7857 | Score: 253.48281125837025
+Epoch 12 --> Steps:  539 | Non-zero actions:  413 | Actions/Steps: 0.7662 | Score: 228.07077439151487
+Epoch 13 --> Steps:  454 | Non-zero actions:  392 | Actions/Steps: 0.8634 | Score: 238.5016534782204
+Epoch 14 --> Steps:  383 | Non-zero actions:  311 | Actions/Steps: 0.8120 | Score: 240.0464147222258
+Epoch 15 --> Steps:  393 | Non-zero actions:  308 | Actions/Steps: 0.7837 | Score: 254.08118758360143
+Epoch 16 --> Steps:  558 | Non-zero actions:  485 | Actions/Steps: 0.8692 | Score: 231.94940469496515
+Epoch 17 --> Steps:  463 | Non-zero actions:  404 | Actions/Steps: 0.8726 | Score: 231.54986122933923
+Epoch 18 --> Steps:  287 | Non-zero actions:  209 | Actions/Steps: 0.7282 | Score: 289.71217912316877
+Epoch 19 --> Steps:  384 | Non-zero actions:  317 | Actions/Steps: 0.8255 | Score: 278.0702110437453
+Epoch 20 --> Steps:  531 | Non-zero actions:  447 | Actions/Steps: 0.8418 | Score: 213.32673289142662
+Epoch 21 --> Steps:  143 | Non-zero actions:  119 | Actions/Steps: 0.8322 | Score: -167.05844306926113
+Epoch 22 --> Steps:  570 | Non-zero actions:  479 | Actions/Steps: 0.8404 | Score: 227.4720928387307
+Epoch 23 --> Steps:  497 | Non-zero actions:  398 | Actions/Steps: 0.8008 | Score: 199.3838514310645
+Epoch 24 --> Steps:  239 | Non-zero actions:  192 | Actions/Steps: 0.8033 | Score: 46.988814389552346
+Epoch 25 --> Steps:  516 | Non-zero actions:  417 | Actions/Steps: 0.8081 | Score: 190.37216232416495
+Epoch 26 --> Steps:  383 | Non-zero actions:  289 | Actions/Steps: 0.7546 | Score: 259.4779419601272
+Epoch 27 --> Steps:  260 | Non-zero actions:  245 | Actions/Steps: 0.9423 | Score: 3.712980454470909
+Epoch 28 --> Steps:  466 | Non-zero actions:  423 | Actions/Steps: 0.9077 | Score: -18.779284767562288
+Epoch 29 --> Steps:  518 | Non-zero actions:  393 | Actions/Steps: 0.7587 | Score: 205.58701532980135
+Epoch 30 --> Steps:  506 | Non-zero actions:  428 | Actions/Steps: 0.8458 | Score: 253.06145829946865
+Epoch 31 --> Steps:  429 | Non-zero actions:  369 | Actions/Steps: 0.8601 | Score: 223.56218519969485
+Epoch 32 --> Steps:  231 | Non-zero actions:  231 | Actions/Steps: 1.0000 | Score: 54.57306288144983
+Epoch 33 --> Steps:  551 | Non-zero actions:  473 | Actions/Steps: 0.8584 | Score: 241.95985314375213
+Epoch 34 --> Steps:  304 | Non-zero actions:  278 | Actions/Steps: 0.9145 | Score: 20.643857055046766
+Epoch 35 --> Steps:  534 | Non-zero actions:  451 | Actions/Steps: 0.8446 | Score: 211.8841439200255
+Epoch 36 --> Steps:  622 | Non-zero actions:  486 | Actions/Steps: 0.7814 | Score: 235.63639901787974
+Epoch 37 --> Steps:  439 | Non-zero actions:  364 | Actions/Steps: 0.8292 | Score: 249.99709846316483
+Epoch 38 --> Steps:  525 | Non-zero actions:  451 | Actions/Steps: 0.8590 | Score: 204.23895670566878
+Epoch 39 --> Steps:  496 | Non-zero actions:  409 | Actions/Steps: 0.8246 | Score: 238.7931249315329
+Epoch 40 --> Steps:  396 | Non-zero actions:  322 | Actions/Steps: 0.8131 | Score: 253.78797772538553
+Epoch 41 --> Steps:  408 | Non-zero actions:  334 | Actions/Steps: 0.8186 | Score: 267.58152847923327
+Epoch 42 --> Steps:  514 | Non-zero actions:  419 | Actions/Steps: 0.8152 | Score: 192.5403649818978
+Epoch 43 --> Steps:  547 | Non-zero actions:  473 | Actions/Steps: 0.8647 | Score: 222.47869203084355
+Epoch 44 --> Steps:  364 | Non-zero actions:  226 | Actions/Steps: 0.6209 | Score: 254.38170150959803
+Epoch 45 --> Steps:  594 | Non-zero actions:  484 | Actions/Steps: 0.8148 | Score: 228.19528487383442
+Epoch 46 --> Steps:  458 | Non-zero actions:  379 | Actions/Steps: 0.8275 | Score: 208.7209289746353
+Epoch 47 --> Steps:  373 | Non-zero actions:  286 | Actions/Steps: 0.7668 | Score: 252.6126442552542
+Epoch 48 --> Steps:  386 | Non-zero actions:  297 | Actions/Steps: 0.7694 | Score: 241.55962291369
+Epoch 49 --> Steps:  447 | Non-zero actions:  383 | Actions/Steps: 0.8568 | Score: 242.5224811854776
+Epoch 50 --> Steps:  199 | Non-zero actions:  184 | Actions/Steps: 0.9246 | Score: 38.66837503198067
+Epoch 51 --> Steps:  546 | Non-zero actions:  480 | Actions/Steps: 0.8791 | Score: 244.7155156514247
+Epoch 52 --> Steps:  455 | Non-zero actions:  393 | Actions/Steps: 0.8637 | Score: 245.69708635232658
+Epoch 53 --> Steps:  511 | Non-zero actions:  417 | Actions/Steps: 0.8160 | Score: 218.68180169073395
+Epoch 54 --> Steps:  512 | Non-zero actions:  408 | Actions/Steps: 0.7969 | Score: 228.9640510793941
+Epoch 55 --> Steps:  451 | Non-zero actions:  362 | Actions/Steps: 0.8027 | Score: 238.32200943724075
+Epoch 56 --> Steps:  539 | Non-zero actions:  463 | Actions/Steps: 0.8590 | Score: 216.23804643605138
+Epoch 57 --> Steps:  469 | Non-zero actions:  410 | Actions/Steps: 0.8742 | Score: 249.53028081604845
+Epoch 58 --> Steps:  499 | Non-zero actions:  390 | Actions/Steps: 0.7816 | Score: 222.5764048239161
+Epoch 59 --> Steps:  414 | Non-zero actions:  328 | Actions/Steps: 0.7923 | Score: 230.77362805317102
+Epoch 60 --> Steps:  457 | Non-zero actions:  374 | Actions/Steps: 0.8184 | Score: 209.08836563750106
+Epoch 61 --> Steps:  367 | Non-zero actions:  296 | Actions/Steps: 0.8065 | Score: 265.2741116916398
+Epoch 62 --> Steps:  537 | Non-zero actions:  438 | Actions/Steps: 0.8156 | Score: 200.64462978085857
+Epoch 63 --> Steps:  606 | Non-zero actions:  499 | Actions/Steps: 0.8234 | Score: 242.5773623910473
+Epoch 64 --> Steps:  536 | Non-zero actions:  464 | Actions/Steps: 0.8657 | Score: 261.0115191726642
+Epoch 65 --> Steps:  523 | Non-zero actions:  459 | Actions/Steps: 0.8776 | Score: 221.81114970848617
+Epoch 66 --> Steps:  175 | Non-zero actions:  153 | Actions/Steps: 0.8743 | Score: -10.569387025437479
+Epoch 67 --> Steps:  364 | Non-zero actions:  306 | Actions/Steps: 0.8407 | Score: 274.308153045548
+Epoch 68 --> Steps:  289 | Non-zero actions:  220 | Actions/Steps: 0.7612 | Score: 253.7516897859623
+Epoch 69 --> Steps:  189 | Non-zero actions:  170 | Actions/Steps: 0.8995 | Score: -30.931050783574918
+Epoch 70 --> Steps:  445 | Non-zero actions:  372 | Actions/Steps: 0.8360 | Score: 238.7298296452235
+Epoch 71 --> Steps:  485 | Non-zero actions:  410 | Actions/Steps: 0.8454 | Score: 239.06160837521568
+Epoch 72 --> Steps:  485 | Non-zero actions:  416 | Actions/Steps: 0.8577 | Score: 233.5824485153905
+Epoch 73 --> Steps:  494 | Non-zero actions:  420 | Actions/Steps: 0.8502 | Score: 236.95715303442898
+Epoch 74 --> Steps:  354 | Non-zero actions:  303 | Actions/Steps: 0.8559 | Score: 253.25283394798183
+Epoch 75 --> Steps:  458 | Non-zero actions:  391 | Actions/Steps: 0.8537 | Score: 214.11941453689275
+Epoch 76 --> Steps:  477 | Non-zero actions:  419 | Actions/Steps: 0.8784 | Score: 250.65542917595153
+Epoch 77 --> Steps:  393 | Non-zero actions:  336 | Actions/Steps: 0.8550 | Score: 272.97775492228664
+Epoch 78 --> Steps:  375 | Non-zero actions:  296 | Actions/Steps: 0.7893 | Score: 268.43694865532086
+Epoch 79 --> Steps:  521 | Non-zero actions:  400 | Actions/Steps: 0.7678 | Score: 222.0856964885881
+Epoch 80 --> Steps:  533 | Non-zero actions:  437 | Actions/Steps: 0.8199 | Score: 208.9752006557119
+Epoch 81 --> Steps:  477 | Non-zero actions:  414 | Actions/Steps: 0.8679 | Score: 262.0783430723427
+Epoch 82 --> Steps:  521 | Non-zero actions:  419 | Actions/Steps: 0.8042 | Score: 220.33374977596804
+Epoch 83 --> Steps: 1000 | Non-zero actions:  982 | Actions/Steps: 0.9820 | Score: 107.14223843462293
+Epoch 84 --> Steps:  517 | Non-zero actions:  459 | Actions/Steps: 0.8878 | Score: 205.9923185664263
+Epoch 85 --> Steps:  448 | Non-zero actions:  351 | Actions/Steps: 0.7835 | Score: 218.20568200427957
+Epoch 86 --> Steps:  398 | Non-zero actions:  312 | Actions/Steps: 0.7839 | Score: 250.185265907709
+Epoch 87 --> Steps:  455 | Non-zero actions:  337 | Actions/Steps: 0.7407 | Score: 234.53762808409903
+Epoch 88 --> Steps:  230 | Non-zero actions:  230 | Actions/Steps: 1.0000 | Score: 79.93573869313346
+Epoch 89 --> Steps:  483 | Non-zero actions:  376 | Actions/Steps: 0.7785 | Score: 209.56741266606593
+Epoch 90 --> Steps:  318 | Non-zero actions:  187 | Actions/Steps: 0.5881 | Score: 289.03701500673475
+Epoch 91 --> Steps:  438 | Non-zero actions:  347 | Actions/Steps: 0.7922 | Score: 243.70152080926738
+Epoch 92 --> Steps:  495 | Non-zero actions:  430 | Actions/Steps: 0.8687 | Score: 230.3258429127992
+Epoch 93 --> Steps:  548 | Non-zero actions:  451 | Actions/Steps: 0.8230 | Score: 226.54453507289304
+Epoch 94 --> Steps:  496 | Non-zero actions:  405 | Actions/Steps: 0.8165 | Score: 209.49123379041356
+Epoch 95 --> Steps:  510 | Non-zero actions:  427 | Actions/Steps: 0.8373 | Score: 211.81196282121073
+Epoch 96 --> Steps:  514 | Non-zero actions:  451 | Actions/Steps: 0.8774 | Score: 227.3829048910918
+Epoch 97 --> Steps:  524 | Non-zero actions:  432 | Actions/Steps: 0.8244 | Score: 193.56020810735137
+Epoch 98 --> Steps:  472 | Non-zero actions:  417 | Actions/Steps: 0.8835 | Score: 231.16094840647025
+Epoch 99 --> Steps:  506 | Non-zero actions:  431 | Actions/Steps: 0.8518 | Score: 217.6740549750299
+
+Test finished
+Average score: 210.3787
+Median score: 230.5497
+Average steps: 451.84
+Average non-zero actions: 375.45
+Average actions/steps ratio: 0.8309
+
+
+Skipping plotting due to the following error: [Errno 2] No such file or directory: 'C:\\Master\\Aprendizaje por refuerzo y técnicas generativas\\P1\\results\\best_lunarlander_2024-02-05_23-36\\avg_fitnesses.npy'

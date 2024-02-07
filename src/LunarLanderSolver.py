@@ -6,6 +6,8 @@ from matplotlib import pyplot as plt
 import numpy as np
 import gymnasium as gym
 import multiprocessing
+import os
+
 from .MLP import MLP
 
 
@@ -40,11 +42,11 @@ class LunarLanderSolver:
         plt.ion()
         plt.cla()
         if show_max:
-            plt.plot(self.max_fitnesses, label="Max Fitness")
+            plt.plot(self.max_fitnesses, label="Max Fitness", marker=".")
         if show_avg:
-            plt.plot(self.avg_fitnesses, label="Avg Fitness")
+            plt.plot(self.avg_fitnesses, label="Avg Fitness", linestyle="dashed")
         if show_min:
-            plt.plot(self.min_fitnesses, label="Min Fitness")
+            plt.plot(self.min_fitnesses, label="Min Fitness", marker=".")
         plt.xlabel("Generation")
         plt.ylabel("Fitness")
         plt.title(f"Fitness over generations (Generation: {self.generations})")
@@ -268,11 +270,11 @@ class LunarLanderSolver:
         Returns:
             MLP | None: the best individual found.
         """
-
-
-
-        #Evoluciona una población `pop` durante `ngen` generaciones para resolver el problema de LunarLander y devolver la mejor red `MLP` encontrada.
         try:
+            if save_best:
+                os.makedirs(save_best_path, exist_ok=False)
+            save_best_path = os.path.abspath(save_best_path)
+
             pop = copy.deepcopy(pop)
             print("Initial population sorting...")
             fitness, pop = self.sort_pop(pop, fit)
@@ -303,8 +305,8 @@ class LunarLanderSolver:
                     self.best_fit = fitness[0]
                     if save_best:
                         best_ch = self.best_ind.to_chromosome()
-                        np.save(f"{save_best_path}_ch.npy", best_ch)
-                        np.savetxt(f"{save_best_path}_ch.txt", best_ch)
+                        np.save(os.path.join(save_best_path, "ch.npy"), best_ch)
+                        np.savetxt(os.path.join(save_best_path, "ch.txt"), best_ch)
                     if early_stop and fitness[0] > early_stop:
                         print(f")  Best Fitness = {fitness[0]:0.16f}  (time elapsed: {time_elapsed:4.4f}s) (early stop due to fitness > {early_stop})")
                         raise KeyboardInterrupt
@@ -329,9 +331,9 @@ class LunarLanderSolver:
         except KeyboardInterrupt:
             return self.best_ind
         finally:
-            np.save(f"{save_best_path}_max_fitnesses.npy", self.max_fitnesses)
-            np.save(f"{save_best_path}_min_fitnesses.npy", self.min_fitnesses)
-            np.save(f"{save_best_path}_avg_fitnesses.npy", self.avg_fitnesses)
-            np.save(f"{save_best_path}_times_elapsed.npy", self.times_elapsed)
+            np.save(os.path.join(save_best_path, "max_fitnesses.npy"), self.max_fitnesses)
+            np.save(os.path.join(save_best_path, "min_fitnesses.npy"), self.min_fitnesses)
+            np.save(os.path.join(save_best_path, "avg_fitnesses.npy"), self.avg_fitnesses)
+            np.save(os.path.join(save_best_path, "times_elapsed.npy"), self.times_elapsed)
 
         return pop[0]  # a.k.a. best

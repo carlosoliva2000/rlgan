@@ -18,7 +18,7 @@ def train():
         print(f"Best chromosome: {best_ch.tolist()}")
 
         lunarlander_solver.plot_fitness()
-        input("Press Enter to continue...")
+        input("\nPress Enter to continue...")
 
 
 if __name__ == "__main__":
