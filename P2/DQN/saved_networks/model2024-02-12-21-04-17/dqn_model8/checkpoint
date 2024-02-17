@@ -1,0 +1,2 @@
+model_checkpoint_path: "net_weights8"
+all_model_checkpoint_paths: "net_weights8"
