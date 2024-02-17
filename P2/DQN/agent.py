@@ -30,7 +30,7 @@ def DeepQNetwork(lr, num_actions, input_dims, hidden_dims, name=None) -> Sequent
     q_net.add(Dense(num_actions, activation=None))
 
     q_net.compile(optimizer=Adam(learning_rate=lr), loss='mse')
-    q_net.summary()
+    # q_net.summary()
 
     return q_net
 
@@ -193,6 +193,7 @@ class Agent:
         # path_prefix = os.path.split(path)[0]
         print(f"INFO: Loading model at {path}")
         self.q_net = load_model(path)
+        self.q_net.summary()
 
         self.epsilon = 0.0
         scores, episodes, avg_scores = [], [], []
@@ -218,7 +219,7 @@ class Agent:
 
         print(f"INFO: Test finished with an average score of {np.mean(avg_scores):.2f} over {num_episodes} episodes")
 
-        df = pd.DataFrame({'x': episodes, 'Score': scores, 'Average Score': avg_scores, 'Solved Requirement': [200]*num_episodes})
+        df = pd.DataFrame({'x': episodes, 'Score': scores, 'Average Score': avg_scores, 'Solved Threshold': [200]*num_episodes})
 
         plt.plot('x', 'Score', data=df, marker='', color='blue', linewidth=2, label='Score')
         plt.plot('x', 'Average Score', data=df, marker='', color='orange', linewidth=2, linestyle='dashed', label='Media score')

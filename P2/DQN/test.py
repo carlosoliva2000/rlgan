@@ -11,7 +11,7 @@ import os
 
 
 def main():
-    env = gym.make("LunarLander-v2")  # , render_mode="human")
+    env = gym.make("LunarLander-v2", render_mode="human")
     num_episodes = 10
 
     dqn_agent = Agent(
@@ -26,7 +26,7 @@ def main():
     dqn_agent.test(
         env=env, 
         num_episodes=num_episodes, 
-        path=os.path.abspath(os.path.join(os.getcwd(), 'DQN', 'saved_networks', 'model2024-02-17-21-32-59', 'models', 'dqn_model_300'))
+        path=os.path.abspath(os.path.join(os.getcwd(), 'DQN', 'saved_networks', 'model2024-02-17-22-30-17', 'models', 'dqn_model_500'))
     )
 
     env.close()
