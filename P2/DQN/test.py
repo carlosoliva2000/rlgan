@@ -1,16 +1,10 @@
-from datetime import datetime
-# import tensorflow as tf
-# gpus = tf.config.experimental.list_physical_devices('GPU')
-# tf.config.experimental.set_memory_growth(gpus[0], True)
-# tf.keras.utils.set_random_seed(1)
-# tf.config.experimental.enable_op_determinism()
-
-from agent import Agent
-import gymnasium as gym
 import os
 
 
 def main():
+    from agent import Agent
+    import gymnasium as gym
+
     env = gym.make("LunarLander-v2", render_mode="rgb_array")  # , render_mode="human")
     num_episodes = 10
 
@@ -52,4 +46,5 @@ def check_cwd():
 
 
 if __name__ == '__main__':
-    main()
+    if check_cwd():
+        main()
