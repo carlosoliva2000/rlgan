@@ -21,14 +21,17 @@ def main():
         num_actions=4, 
         batch_size=64, 
         input_dims=8, 
-        hidden_dims=[32, 32]
+        epsilon_decay=0.99,
+        # epsilon_decay=0.92,
+        # update_rate=2000,
+        hidden_dims=[64, 64]  # [32, 32]
     )
 
     dqn_agent.train_model(
         env=env, 
         num_episodes=num_episodes, 
         steps_per_episode=steps_per_episode,
-        path=os.path.abspath(os.path.join(os.getcwd(), 'DQN', 'saved_networks', f'model{datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}'))
+        path=os.path.abspath(os.path.join(os.getcwd(), 'saved_networks', f'model{datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}'))
     )
 
     env.close()

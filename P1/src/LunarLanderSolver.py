@@ -249,7 +249,7 @@ class LunarLanderSolver:
                plt_show=False, save_best=True, save_best_path=f"results/best_lunarlander_{time.strftime('%Y-%m-%d_%H-%M')}",
                early_stop: Optional[float]=None,
                trace: int=0
-               ) -> MLP | None:
+               ) -> Optional[MLP]:
         """Evolves a population `pop` during `ngen` generations to solve the LunarLander problem and returns the best `MLP` found.
 
         Args:

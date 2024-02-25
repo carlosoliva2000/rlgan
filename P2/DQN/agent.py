@@ -137,6 +137,7 @@ class Agent:
                 for step in range(1, steps_per_episode+1):
                     action = self.policy(state)
                     new_state, reward, terminated, truncated, _ = env.step(action)
+                    truncated = truncated or step == steps_per_episode
                     done = terminated or truncated
                     score += reward
                     self.store_tuple(state, action, reward, new_state, done)
@@ -180,7 +181,7 @@ class Agent:
         df = pd.DataFrame({'x': episodes, 'Score': scores, 'Average Score': avg_scores, 'Solved Threshold': [200]*num_episodes})
 
         plt.plot('x', 'Score', data=df, marker='', color='blue', linewidth=2, label='Score')
-        plt.plot('x', 'Average Score', data=df, marker='', color='orange', linewidth=2, linestyle='dashed', label='Media score')
+        plt.plot('x', 'Average Score', data=df, marker='', color='orange', linewidth=2, linestyle='dashed', label='AVG score')
         plt.plot('x', 'Solved Threshold', data=df, marker='', color='red', linewidth=2, linestyle='dashed', label='Umbral resuelto')
         plt.xlabel('Episodes')
         plt.ylabel('Score')
@@ -190,34 +191,105 @@ class Agent:
 
 
     def test(self, env, num_episodes, path):
+        import PIL.Image
+        from PIL import ImageDraw, ImageFont
+        import imageio
+
         # path_prefix = os.path.split(path)[0]
         print(f"INFO: Loading model at {path}")
         self.q_net = load_model(path)
         self.q_net.summary()
 
         self.epsilon = 0.0
-        scores, episodes, avg_scores = [], [], []
+        scores, episodes, avg_scores, nonzero_actions_episode, steps_episode = [], [], [], [], []
         score = 0.0
 
-        print("INFO: Starting test...")
-        for episode in range(1, num_episodes+1):
-            state, _ = env.reset()
-            done = False
-            episode_score = 0.0
-            while not done:
-                # env.render()
-                action = self.policy(state)
-                new_state, reward, terminated, truncated, _ = env.step(action)
-                done = terminated or truncated
-                episode_score += reward
-                state = new_state
-            score += episode_score
-            scores.append(episode_score)
-            episodes.append(episode)
-            avg_score = np.mean(scores[-100:])
-            avg_scores.append(avg_score)
+        seeds = np.random.randint(0, 2**32, num_episodes, dtype=np.uint64)
 
-        print(f"INFO: Test finished with an average score of {np.mean(avg_scores):.2f} over {num_episodes} episodes")
+        try:
+            font = ImageFont.truetype("arial.ttf", 14)
+        except OSError:
+            font = ImageFont.load_default(14)
+
+        print(f"INFO: Starting test for {num_episodes} episodes...")
+        with imageio.get_writer(os.path.join(path, "test_video.mp4"), fps=50) as video:
+            for episode in range(1, num_episodes+1):
+                seed = int(seeds[episode-1])
+                state, _ = env.reset(seed=seed)
+                done = False
+                episode_score = 0.0
+                steps = 0
+                nonzero_actions = 0
+                video.append_data(env.render())
+                while not done:
+                    # env.render()
+                    action = self.policy(state)
+                    new_state, reward, terminated, truncated, _ = env.step(action)
+                    done = terminated or truncated
+                    episode_score += reward
+                    state = new_state
+
+                    # Statistics
+                    steps += 1
+                    if action != 0:
+                        nonzero_actions += 1
+
+                    render = PIL.Image.fromarray(env.render())
+                    draw = ImageDraw.Draw(render)
+                    draw.text((5.0, 5.0), f"Episode: {episode:2}", font=font)
+                    draw.text((5.0, 20.0), f"Steps: {steps:4}", font=font)
+                    draw.text((5.0, 35.0), f"Reward: {reward:7.2f}", font=font)
+                    draw.text((5.0, 50.0), f"Racum: {episode_score:7.2f}", font=font)
+                    draw.text((render.width-5.0, 5.0), f"Seed: {seed}", font=font, anchor="rt")
+                    video.append_data(np.array(render))
+                
+                draw.text((5.0, 70.0), "FINISHED", font=font)
+                render_array = np.array(render)
+                for _ in range(90):
+                    video.append_data(render_array)
+                
+                score += episode_score
+                act_steps_ratio = nonzero_actions / steps
+                print(f"Episode {episode: >4}/{num_episodes: <4} --> Steps: {steps:4} | Non-zero actions: {nonzero_actions:4} | "
+                    f"Actions/Steps: {act_steps_ratio:.4f} | Score: {episode_score:8.2f} | Seed: {seed}")
+                # print(f"Episode {episode: >4}/{num_episodes: <4} -->  Score = {episode_score:8.2f}")
+                scores.append(episode_score)
+                episodes.append(episode)
+                avg_score = np.mean(scores[-100:])
+                avg_scores.append(avg_score)
+                nonzero_actions_episode.append(nonzero_actions)
+                steps_episode.append(steps)
+
+        print("\nINFO: Test finished")
+        print(f"Average score: {np.mean(scores):.4f}")
+        print(f"Median score: {np.median(scores):.4f}")
+        print(f"Average steps: {np.mean(steps_episode):.2f}")
+        print(f"Average non-zero actions: {np.mean(nonzero_actions_episode):.2f}")
+        print(f"Average actions/steps ratio: {(np.mean(nonzero_actions_episode) / np.mean(steps_episode)):.4f}\n") # type: ignore
+        # print(f"INFO: Test finished with an average score of {np.mean(avg_scores):.2f} over {num_episodes} episodes")
+
+        print(f"\nINFO: Video saved to {os.path.join(path, 'test_video.mp4')}")
+        print(f"INFO: Plotting steps and non-zero actions vs iteration...")
+        fig, axs = plt.subplots(2)
+        axs[0].plot(nonzero_actions_episode, label="Non-zero actions", marker="o", linestyle="--")
+        axs[0].plot(steps_episode, label="Steps", marker="o", linestyle="--")
+        axs[0].set_title("Steps and Non-zero actions throughout iterations")
+        axs[0].set_xlabel("Iterations")
+        axs[0].set_ylabel("Steps/Non-zero actions")
+        axs[0].xaxis.set_major_locator(plt.MaxNLocator(integer=True))
+        axs[0].set_yticks(np.arange(0, 1001, 200))
+        axs[0].grid()
+        axs[0].legend()
+        axs[1].plot(np.array(nonzero_actions_episode) / np.array(steps_episode), marker="o", linestyle="--")
+        axs[1].set_title("Non-zero actions/Steps ratio")
+        axs[1].set_xlabel("Iterations")
+        axs[1].set_ylabel("Ratio")
+        axs[1].xaxis.set_major_locator(plt.MaxNLocator(integer=True))
+        # force the y-axis to be between 0 and 1 with a step of 0.1
+        axs[1].set_yticks(np.arange(0, 1.1, 0.1))
+        axs[1].grid()
+        # axs[1].legend()
+        plt.show()
 
         df = pd.DataFrame({'x': episodes, 'Score': scores, 'Average Score': avg_scores, 'Solved Threshold': [200]*num_episodes})
 
@@ -229,3 +301,5 @@ class Agent:
         plt.legend()
         plt.savefig(test_graph_path := os.path.join(path, 'TestMetrics.png'))
         print(f'INFO: Test metrics graph saved to "{test_graph_path}"')
+
+        # input("\nPress Enter to continue...")
