@@ -1,17 +1,14 @@
-from datetime import datetime
-# import tensorflow as tf
-# gpus = tf.config.experimental.list_physical_devices('GPU')
-# tf.config.experimental.set_memory_growth(gpus[0], True)
-# tf.keras.utils.set_random_seed(1)
-# tf.config.experimental.enable_op_determinism()
-
-from agent import Agent
-import gymnasium as gym
 import os
 
-
 def main():
+    from datetime import datetime
+    from agent import Agent
+
+    import gymnasium as gym
+
     env = gym.make("LunarLander-v2")
+    assert env is not None, "Environment not found"
+    assert env.spec is not None, "Environment spec not found"
     num_episodes = 500
     steps_per_episode = env.spec.max_episode_steps  # 800
 
@@ -37,5 +34,25 @@ def main():
     env.close()
 
 
+def check_cwd():
+    script_hint = "DQN"
+    msg = f"""ERROR: You need to set your cwd to \"{os.path.dirname(os.path.abspath(__file__))}\" to execute this script.
+       This ensures that the path to save the results is correct.
+       Then, you can run the train.py script"""
+
+    # Check if the file is there
+    if not os.path.isfile("_EXECUTE_FROM_THIS_PATH.txt"):
+        print(msg)
+        return False
+    
+    # Check if the line is script_hint
+    with open("_EXECUTE_FROM_THIS_PATH.txt", "r") as f:
+        line = f.readline().strip()
+        if line != script_hint:
+            return False
+    return True
+
+
 if __name__ == '__main__':
-    main()
+    if check_cwd():
+        main()

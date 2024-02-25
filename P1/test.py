@@ -1,13 +1,14 @@
 from typing import Optional
 from src.MLP import MLP
 from src.LunarLanderSolver import LunarLanderSolver
+from PIL import ImageDraw, ImageFont
+
 import numpy as np
 import gymnasium as gym
 import time
 import os
 import matplotlib.pyplot as plt
 import PIL.Image
-from PIL import ImageDraw, ImageFont
 import imageio
 
 def run (model: MLP, video, episode: int, seed=None, norm_reward=False, visualize=False):
@@ -57,6 +58,25 @@ def run (model: MLP, video, episode: int, seed=None, norm_reward=False, visualiz
                       'steps': steps,
                       'nonzero_actions': nonzero_actions}
             return output
+        
+
+def check_cwd():
+    script_hint = "NEUROEVOLUTION"
+    msg = f"""ERROR: You need to set your cwd to \"{os.path.dirname(os.path.abspath(__file__))}\" to execute this script.
+       This ensures that the path to load the results is correct.
+       Then, you can run the test.py script"""
+
+    # Check if the file is there
+    if not os.path.isfile("_EXECUTE_FROM_THIS_PATH.txt"):
+        print(msg)
+        return False
+    
+    # Check if the line is script_hint
+    with open("_EXECUTE_FROM_THIS_PATH.txt", "r") as f:
+        line = f.readline().strip()
+        if line != script_hint:
+            return False
+    return True
 
 
 def test():
@@ -146,4 +166,5 @@ def test():
     
 
 if __name__ == "__main__":
-    test()
+    if check_cwd():
+        test()

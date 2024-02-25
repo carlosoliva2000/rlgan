@@ -32,5 +32,24 @@ def main():
     env.close()
 
 
+def check_cwd():
+    script_hint = "DQN"
+    msg = f"""ERROR: You need to set your cwd to \"{os.path.dirname(os.path.abspath(__file__))}\" to execute this script.
+       This ensures that the path to load the results is correct.
+       Then, you can run the test.py script"""
+
+    # Check if the file is there
+    if not os.path.isfile("_EXECUTE_FROM_THIS_PATH.txt"):
+        print(msg)
+        return False
+    
+    # Check if the line is script_hint
+    with open("_EXECUTE_FROM_THIS_PATH.txt", "r") as f:
+        line = f.readline().strip()
+        if line != script_hint:
+            return False
+    return True
+
+
 if __name__ == '__main__':
     main()
