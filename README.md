@@ -1,0 +1,19 @@
+# Installation
+
+To install the dependencies, we recommend the use of **conda** ([miniconda](https://docs.anaconda.com/free/miniconda/index.html) is a lightweight option). You can create a conda environment with Python 3.9.18 typing:
+
+`conda create --name <desired_env_name> --file conda_requirements.txt`.
+
+If you don't have conda installed or don't want to use it (although is highly recommended), you can try creating a virtual environment (or in your default Python installation if you have the version 3.9.18) typing:
+
+1. **Optional:**  only if you want to create a virtual environment (change the path to where Python 3.9.18 is installed). `path/to/python3.9.18/python3 -m venv <desired_env_name>`
+2. **Optional:** only if you followed the previous step. `source env/Scripts/activate` in Windows. `source env/bin/activate` in UNIX.
+3. `pip install -r requirements.txt`
+
+These scripts were tested and used in Windows 10. They have not been tested in any UNIX OS (Linux, Ubuntu, etc), therefore some dependencies might (or not) be problematic.
+
+# Execution
+
+Remember to activate your conda `conda activate <env_name>` or virtual environment (step 2 in the previous section) before executing any script.
+
+Each subproject (P1, P2 and P3) have a file `_EXECUTE_FROM_THIS_PATH.txt` for a reason. For example, if you want to train/test a model from P2, set your current working directory to that directory. Then, you can simply call `./test.py` or `./train.py`.
