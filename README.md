@@ -29,7 +29,7 @@ Each subproject (P1, P2 and P3) have a file `_EXECUTE_FROM_THIS_PATH.txt` for a 
 
 # Disclaimer
 
-The versions of Neuroevolution (P1) and DQN (P2/DQN) has been developed by Carlos.
+The versions of Neuroevolution (P1) and DQN (P2/DQN) have been developed by Carlos.
 
 DuelingDQN (P2/DuelingDQN) has been developed by Christian and the instructions above don't really apply, because it uses PyTorch instead of TensorFlow.
 
