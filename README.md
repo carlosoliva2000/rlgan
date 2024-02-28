@@ -1,3 +1,9 @@
+# Credits
+
+- Carlos Oliva López
+- Christian Graf Aray
+
+
 # Installation
 
 These scripts are intendeed to be used, were tested and executed with Python 3.9.18 on Windows 10. This is due to the tensorflow gpu limitation on newer Python versions on Windows. We can't guarantee these scripts will work using other Python versions. If you have any subversion of Python 3.9 already installed, you may want to try it first before installing 3.9.18.
@@ -19,3 +25,14 @@ These scripts were tested and used in Windows 10. They have not been tested in a
 Remember to activate your conda `conda activate <env_name>` or virtual environment (step 2 in the previous section) before executing any script.
 
 Each subproject (P1, P2 and P3) have a file `_EXECUTE_FROM_THIS_PATH.txt` for a reason. For example, if you want to train/test a model from P2, set your current working directory to that directory. Then, you can simply call `./test.py` or `./train.py`.
+
+
+# Disclaimer
+
+The versions of Neuroevolution (P1) and DQN (P2/DQN) has been developed by Carlos.
+
+DuelingDQN (P2/DuelingDQN) has been developed by Christian and the instructions above don't really apply, because it uses PyTorch instead of TensorFlow.
+
+- To train: main.py
+- To create charts: main_load_charts.py
+- To test: main_test_networks.py
